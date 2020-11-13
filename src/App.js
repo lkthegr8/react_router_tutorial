@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import About_us from './components/About_us'
+import Nav from './components/Nav'
+import Shop from './components/Shop'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import ItemDetail from './components/ItemDetail'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export class App extends Component {
+  static propTypes = {
+
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Nav />
+          <Route path='/' component={Home} exact/>
+          <Route path='/about' component={About_us}/>
+          <Route path='/shop' component={Shop} exact/>
+          <Route path='/shop/:id' component={ItemDetail}/>
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default App;
+
+const Home=()=>(
+  <div>
+    <h1>Home Page</h1>
+  </div>
+)
+
+export default App
+
