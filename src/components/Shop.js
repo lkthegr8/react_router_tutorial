@@ -3,16 +3,18 @@ import {Link} from 'react-router-dom'
 
 function Shop(){
 
+  const [items,setItems]=useState([])
+  
         useEffect(()=>{
             fetchItems()
         },[])
 
-        const [items,setItems]=useState([])
+
 
     const fetchItems= async ()=>{
         const data =await fetch('https://fortnite-api.theapinetwork.com/upcoming/get');
         const items=await data.json()
-        console.log(items.data);
+        // console.log(items.data);
         setItems(items.data)
     }
 
